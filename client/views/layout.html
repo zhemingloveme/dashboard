@@ -1,0 +1,12 @@
+<template name="dashboardLayout">
+{{# AdminLTE}}
+	{{> steedosHeader}}
+	{{> dashboardSidebar}}
+
+
+	<div class="content-wrapper">
+	{{> Template.dynamic template=main}}
+	</div>
+	{{> autoformModals}}
+{{/AdminLTE}}
+</template>
