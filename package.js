@@ -5,6 +5,11 @@ Package.describe({
 	git: "https://github.com/steedos/dashboard"
 });
 
+Npm.depends({
+	'request'  : '2.81.0',
+	'node-schedule' : '1.2.1',
+	cookies: "0.6.1",
+});
 
 Package.onUse(function(api) { 
 	api.versionsFrom("1.2.1");
@@ -74,9 +79,10 @@ Package.onUse(function(api) {
 	api.addFiles('server/publications/auth_users.coffee', 'server');
 
 	api.addFiles('server/routes/app_sso.coffee', 'server');
+	api.addFiles('server/routes/dashboard.coffee', 'server');
 
-    // EXPORT
-    api.export('Dashboard');
+	// EXPORT
+	api.export('Dashboard');
 });
 
 Package.onTest(function(api) {
