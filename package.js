@@ -60,6 +60,7 @@ Package.onUse(function(api) {
 	api.addFiles('client/views/layout.html', 'client');
 	api.addFiles('client/views/layout.coffee', 'client');
 	api.addFiles('client/views/sidebar.html', 'client');
+	api.addFiles('client/views/sidebar.coffee', 'client');
 	api.addFiles('client/views/dashboard.html', 'client');
 	api.addFiles('client/views/dashboard.coffee', 'client');
 

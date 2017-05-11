@@ -1,39 +1,51 @@
 <template name="dashboardSidebar">
 
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">Dashboards</li>
-        <li>
-          <a href="/dashboard/b/default">
-            <i class="fa fa-dashboard"></i> <span>Dashboard Default</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="/dashboard/b/xxx">
-            <i class="fa fa-dashboard"></i> <span>Dashboard xxx</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Settings</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/admin/dashboards"><i class="fa fa-circle-o"></i> Dashboards</a></li>
-          </ul>
-        </li> -->
-      </ul>
-    </section>
-  </aside>
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+			<!-- sidebar menu: : style can be found in sidebar.less -->
+			<ul class="sidebar-menu">
+				<!-- <li class="header">Dashboards</li> -->
+				<li class="header header-admin header-space-switcher">
+					{{> space_switcher}}
+				</li>
+				{{#each dashboardList}}
+					<li>
+						<a href="/dashboard/space/{{space}}/{{_id}}">
+							<i class="fa fa-dashboard"></i> <span>{{name}}</span>
+							<span class="pull-right-container">
+							</span>
+						</a>
+					</li>
+				{{/each}}
+				<!-- <li>
+					<a href="/dashboard/b/default">
+						<i class="fa fa-dashboard"></i> <span>Dashboard Default</span>
+						<span class="pull-right-container">
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="/dashboard/b/xxx">
+						<i class="fa fa-dashboard"></i> <span>Dashboard xxx</span>
+						<span class="pull-right-container">
+						</span>
+					</a>
+				</li> -->
+				<!-- <li class="treeview">
+					<a href="#">
+						<i class="fa fa-dashboard"></i> <span>Settings</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="/admin/dashboards"><i class="fa fa-circle-o"></i> Dashboards</a></li>
+					</ul>
+				</li> -->
+			</ul>
+		</section>
+	</aside>
 
 </template>
