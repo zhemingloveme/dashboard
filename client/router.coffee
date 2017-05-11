@@ -10,14 +10,19 @@ dashboardRoutes = FlowRouter.group
 
 dashboardRoutes.route '/',
 	action: (params, queryParams)->
-		FlowRouter.go "/dashboard/home"
+		Tracker.autorun (c)->
+			if Steedos.subsBootstrap.ready("my_spaces")
+				spaceId = Steedos.getSpaceId()
+				if spaceId
+					c.stop()
+					FlowRouter.go "/dashboard/space/#{spaceId}/xxx"
 
 
-dashboardRoutes.route '/home',
+dashboardRoutes.route '/space/:spaceId/:dashboardId', 
 	action: (params, queryParams)->
-		if Meteor.userId()
-			BlazeLayout.render 'dashboardLayout',
-				main: "dashboardView"
+		Steedos.setSpaceId(params.spaceId)
+		Session.set("dashboardId", params.dashboardId)
 
-
+		BlazeLayout.render 'dashboardLayout',
+			main: "dashboardView"
 
