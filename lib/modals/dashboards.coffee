@@ -20,6 +20,8 @@ db.portal_dashboards._simpleSchema = new SimpleSchema
 		optional: false
 		autoform: 
 			rows: 20
+			type:"hidden"
+			defaultValue: "{}"
 
 	description: 
 		type: String
@@ -30,15 +32,23 @@ db.portal_dashboards._simpleSchema = new SimpleSchema
 	created: 
 		type: Date
 		optional: true
+		autoform:
+			type:"hidden"
 	created_by:
 		type: String
 		optional: true
+		autoform:
+			type:"hidden"
 	modified:
 		type: Date
 		optional: true
+		autoform:
+			type:"hidden"
 	modified_by:
 		type: String
 		optional: true
+		autoform:
+			type:"hidden"
 		
 
 if Meteor.isClient
@@ -49,6 +59,13 @@ db.portal_dashboards.attachSchema(db.portal_dashboards._simpleSchema)
 
 
 if Meteor.isServer
+	db.portal_dashboards.allow
+		insert: (userId,event) ->
+			if userId
+				return true
+		update: (userId,event) ->
+			if userId
+				return true
 	
 	db.portal_dashboards.before.insert (userId, doc) ->
 		if !userId
