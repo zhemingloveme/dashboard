@@ -1,5 +1,46 @@
 Cookies = Npm.require("cookies")
 
+JsonRoutes.add "get", "/api/dashboard/:dashboard_id", (req, res, next) ->
+	user = Steedos.getAPILoginUser(req, res)
+	if !user
+		JsonRoutes.sendResult res,
+			code: 401,
+			data:
+				"error": "Validate Request -- Missing X-Auth-Token,X-User-Id",
+				"success": false
+		return;
+
+	userId = user._id
+
+	dashboardId = req.params?.dashboardId
+	unless dashboardId
+		JsonRoutes.sendResult res,
+			code: 401,
+			data:
+				"error": "Validate Request -- Missing dashboardId",
+				"success": false
+		return;
+
+	dashboard = db.portal_dashboards.findOne dashboardId, {fields:{freeboard:1}}
+
+	unless dashboard
+		JsonRoutes.sendResult res,
+			code: 401,
+			data:
+				"error": "Validate Request -- Dashboard not found",
+				"success": false
+		return;
+
+	freeboard = if dashboard?.freeboard then dashboard.freeboard else {}
+
+	JsonRoutes.sendResult res,
+		code: 200,
+		data:
+			"status": "success"
+			"freeboard": freeboard
+	return;
+
+
 JsonRoutes.add "post", "/api/dashboard/:dashboard_id", (req, res, next) ->
 	user = Steedos.getAPILoginUser(req, res)
 	if !user
