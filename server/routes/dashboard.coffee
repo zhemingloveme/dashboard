@@ -12,7 +12,7 @@ JsonRoutes.add "get", "/api/dashboard/:dashboard_id", (req, res, next) ->
 
 	userId = user._id
 
-	dashboardId = req.params?.dashboardId
+	dashboardId = req.params?.dashboard_id
 	unless dashboardId
 		JsonRoutes.sendResult res,
 			code: 401,
@@ -53,7 +53,7 @@ JsonRoutes.add "post", "/api/dashboard/:dashboard_id", (req, res, next) ->
 
 	userId = user._id
 
-	dashboardId = req.params?.dashboardId
+	dashboardId = req.params?.dashboard_id
 	unless dashboardId
 		JsonRoutes.sendResult res,
 			code: 401,
