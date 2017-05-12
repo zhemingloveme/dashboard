@@ -21,7 +21,9 @@ JsonRoutes.add "get", "/api/dashboard/:dashboard_id", (req, res, next) ->
 				"success": false
 		return;
 
-	dashboard = db.portal_dashboards.findOne dashboardId, {fields:{freeboard:1}}
+	dashboard = db.portal_dashboards.findOne dashboardId, {fields:{freeboard:1,space:1}}
+	spaceId = dashboard.space
+	isSpaceAdmin = Steedos.isSpaceAdmin spaceId, userId
 
 	unless dashboard
 		JsonRoutes.sendResult res,
@@ -38,6 +40,7 @@ JsonRoutes.add "get", "/api/dashboard/:dashboard_id", (req, res, next) ->
 		data:
 			"status": "success"
 			"freeboard": freeboard
+			"isSpaceAdmin": isSpaceAdmin
 	return;
 
 
