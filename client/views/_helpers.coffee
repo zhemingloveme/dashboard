@@ -3,3 +3,5 @@ Dashboard.helpers =
 		return Steedos.subsBootstrap.ready()
 	dashboardId: ->
 		return Session.get("dashboardId")
+	spaceId: ->
+		return Steedos.spaceId()
