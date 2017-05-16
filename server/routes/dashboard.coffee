@@ -40,7 +40,7 @@ JsonRoutes.add "get", "/api/dashboard/:dashboard_id", (req, res, next) ->
 		data:
 			"status": "success"
 			"freeboard": freeboard
-			"isSpaceAdmin": isSpaceAdmin
+			"isEditable": isSpaceAdmin
 	return;
 
 
