@@ -1,4 +1,8 @@
 Template.dashboardSidebar.helpers
+	liActive:(dashboardId)->
+		currentDashboardId = Session.get "dashboardId"
+		if dashboardId == currentDashboardId
+			return "active"
 	
 	dashboardList: ()->
 		spaceId = Steedos.spaceId()

@@ -5,3 +5,6 @@ Dashboard.helpers =
 		return Session.get("dashboardId")
 	spaceId: ->
 		return Steedos.spaceId()
+	currentDashboardName: ->
+		dashboardId = Session.get("dashboardId")
+		return db.portal_dashboards.findOne({_id:dashboardId})?.name

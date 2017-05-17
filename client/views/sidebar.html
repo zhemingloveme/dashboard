@@ -11,7 +11,7 @@
 					{{> space_switcher}}
 				</li>
 				{{#each dashboardList}}
-					<li>
+					<li class="{{liActive _id}}">
 						<a href="/dashboard/space/{{space}}/{{_id}}">
 							<i class="fa fa-dashboard"></i> <span>{{name}}</span>
 							<span class="pull-right-container">
