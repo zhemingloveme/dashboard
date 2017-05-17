@@ -22,7 +22,7 @@ JsonRoutes.add "get", "/api/dashboard/:dashboard_id", (req, res, next) ->
 		return;
 
 	dashboard = db.portal_dashboards.findOne dashboardId, {fields:{freeboard:1,space:1}}
-	spaceId = dashboard.space
+	spaceId = dashboard?.space
 	isSpaceAdmin = Steedos.isSpaceAdmin spaceId, userId
 
 	unless dashboard
