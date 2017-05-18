@@ -11,11 +11,13 @@ dashboardRoutes = FlowRouter.group
 dashboardRoutes.route '/',
 	action: (params, queryParams)->
 		Tracker.autorun (c)->
-			if Steedos.subsBootstrap.ready("my_spaces")
+			if Steedos.subsBootstrap.ready("my_spaces") and Steedos.subsBootstrap.ready("portal_dashboards")
 				spaceId = Steedos.getSpaceId()
 				if spaceId
+					dashboard = db.portal_dashboards.findOne({space:spaceId},{sort:{created:-1}})
+					dashboardId = dashboard._id
 					c.stop()
-					FlowRouter.go "/dashboard/space/#{spaceId}/xxx"
+					FlowRouter.go "/dashboard/space/#{spaceId}/#{dashboardId}"
 
 
 dashboardRoutes.route '/space/:spaceId/:dashboardId', 

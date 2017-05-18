@@ -20,4 +20,5 @@ Template.dashboardSidebar.events
 
 	"click .btn-delete-dashboard":(event,template)->
 		dashboardId = Session.get "dashboardId"
-		AdminDashboard.modalDelete 'portal_dashboards', dashboardId
+		AdminDashboard.modalDelete 'portal_dashboards', dashboardId,->
+			FlowRouter.go "/dashboard/"
