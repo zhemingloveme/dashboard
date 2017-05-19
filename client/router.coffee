@@ -14,7 +14,7 @@ dashboardRoutes.route '/',
 			if Steedos.subsBootstrap.ready("my_spaces") and Steedos.subsBootstrap.ready("portal_dashboards")
 				spaceId = Steedos.getSpaceId()
 				if spaceId
-					dashboard = db.portal_dashboards.findOne({space:spaceId},{sort:{created:-1}})
+					dashboard = db.portal_dashboards.findOne({space:spaceId},{sort:{created:1}})
 					dashboardId = dashboard._id
 					c.stop()
 					FlowRouter.go "/dashboard/space/#{spaceId}/#{dashboardId}"

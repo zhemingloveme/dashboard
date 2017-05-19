@@ -20,4 +20,5 @@ Dashboard.helpers =
 		userId = Meteor.userId()
 		spaceId = Steedos.spaceId()
 		isSpaceAdmin = Steedos.isSpaceAdmin(spaceId,userId)
-		return "no-sidebar"
+		unless isSpaceAdmin
+			return "no-sidebar"
