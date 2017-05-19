@@ -3,9 +3,10 @@
 		<div class="steedos app-wrapper dashboard">
 			{{# AdminLTE skin="blue" sidebarMini="true" }}
 				{{> dashboardHeader}}
-				{{> dashboardSidebar}}
-
-				<div class="content-wrapper">
+				{{#if isSidebarNeedShow}}
+					{{> dashboardSidebar}}
+				{{/if}}
+				<div class="content-wrapper {{#if isSidebarNeedShow}} no-sidebar {{/if}}">
 					<div class="connection-status">
 						{{> status}}
 					</div>

@@ -8,3 +8,11 @@ Dashboard.helpers =
 	currentDashboardName: ->
 		dashboardId = Session.get("dashboardId")
 		return db.portal_dashboards.findOne({_id:dashboardId})?.name
+	isSidebarNeedShow: ->
+		userId = Meteor.userId()
+		spaceId = Steedos.spaceId()
+		isSpaceAdmin = Steedos.isSpaceAdmin(spaceId,userId)
+		if isSpaceAdmin
+			return true
+		else
+			return false
