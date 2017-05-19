@@ -17,7 +17,7 @@ db.portal_dashboards._simpleSchema = new SimpleSchema
 
 	freeboard:
 		type: String
-		optional: false
+		optional: true
 		autoform: 
 			rows: 20
 			omit: true
