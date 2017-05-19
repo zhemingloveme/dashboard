@@ -16,3 +16,8 @@ Dashboard.helpers =
 			return true
 		else
 			return false
+	addNosidebarClass: ->
+		userId = Meteor.userId()
+		spaceId = Steedos.spaceId()
+		isSpaceAdmin = Steedos.isSpaceAdmin(spaceId,userId)
+		return "no-sidebar"

@@ -6,7 +6,7 @@
 				{{#if isSidebarNeedShow}}
 					{{> dashboardSidebar}}
 				{{/if}}
-				<div class="content-wrapper {{#if isSidebarNeedShow}} no-sidebar {{/if}}">
+				<div class="content-wrapper {{addNosidebarClass}}">
 					<div class="connection-status">
 						{{> status}}
 					</div>
