@@ -20,6 +20,7 @@ db.portal_dashboards._simpleSchema = new SimpleSchema
 		optional: false
 		autoform: 
 			rows: 20
+			omit: true
 			type:"hidden"
 			defaultValue: "{}"
 

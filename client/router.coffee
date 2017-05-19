@@ -12,12 +12,15 @@ dashboardRoutes.route '/',
 	action: (params, queryParams)->
 		Tracker.autorun (c)->
 			if Steedos.subsBootstrap.ready("my_spaces") and Steedos.subsBootstrap.ready("portal_dashboards")
-				spaceId = Steedos.getSpaceId()
+				spaceId = Steedos.spaceId()
 				if spaceId
 					dashboard = db.portal_dashboards.findOne({space:spaceId},{sort:{created:1}})
-					dashboardId = dashboard._id
-					c.stop()
-					FlowRouter.go "/dashboard/space/#{spaceId}/#{dashboardId}"
+					if dashboard
+						c.stop()
+						dashboardId = dashboard._id
+						FlowRouter.go "/dashboard/space/#{spaceId}/#{dashboardId}"
+					else
+						FlowRouter.go "/dashboard/space/#{spaceId}"
 
 
 dashboardRoutes.route '/space/:spaceId/:dashboardId', 
@@ -28,3 +31,8 @@ dashboardRoutes.route '/space/:spaceId/:dashboardId',
 		BlazeLayout.render 'dashboardLayout',
 			main: "dashboardView"
 
+dashboardRoutes.route '/space/:spaceId',
+	action: (params, queryParams)->
+
+		BlazeLayout.render 'dashboardLayout',
+			main: "dashboardView"
