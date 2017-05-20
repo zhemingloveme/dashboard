@@ -17,11 +17,12 @@ db.portal_dashboards._simpleSchema = new SimpleSchema
 
 	freeboard:
 		type: String
-		optional: false
+		optional: true
+		defaultValue: "{}"
 		autoform: 
 			rows: 20
+			omit: true
 			type:"hidden"
-			defaultValue: "{}"
 
 	description: 
 		type: String

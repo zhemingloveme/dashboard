@@ -6,8 +6,6 @@ Meteor.publish 'portal_dashboards', (spaceId)->
     unless spaceId
       return this.ready()
 
-    console.log '[publish] portal_dashboards for space.'
-
     selector = 
         space: spaceId
 
